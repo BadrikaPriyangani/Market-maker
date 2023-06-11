@@ -83,7 +83,27 @@ Success:
  
  Error:
  - Internal server error: 500
+
+
+## Testing
+
+To run the tests, install jest:
+```
+npm install --save-dev typescript jest ts-jest @types/jest
+```
+
+Run the tests:
+```
+npm test
+```
+
+## RoadMap
  
+ - [ ] Extend the application to fetch Kraken and Huobi record books. 
+ - [ ] Implement a logger for log all the details.
+ - [ ] Improve testing with mocking to test the API end points (by mocking the web socket connection) 
+
+
 
 
 
