@@ -68,7 +68,7 @@ router.post('/api/exchanges', (req, res) => {
  *
  * Response:
  * - Status Code: [200,500]
- * - Body: {" "averageMidPrice": 25676.175"}
+ * - Body: {"averageMidPrice": "25676.175"}
  *
  * Errors:
  * - [Error 1]:[Internal server error: 500] 
