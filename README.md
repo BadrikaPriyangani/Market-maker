@@ -5,14 +5,85 @@ This project is a simple implementation of using orderbook data provided by exch
 ## Table of Contents
 
 - [Getting Started](#getting-started)
-- [Application Structure](#application-structure)
-- [Installation] (#installation)
+- [Installation](#installation)
 - [API Documentation](#api-documentation)
 - [Testing](#testing)
-- [To-Do List](#to-do-list)
+- [RoadMap](#roadmap)
 
 ## Getting Started
 
 To run the Market Maker application, you need to have Node.js and TypeScrypt installed on your machine. Clone the repository and navigate to the project root directory.
 
-## Application Structure
+## Installation
+
+To run the Market Maker app, use following commands:
+
+```
+npm install
+```
+This will install all the dependencies required for the app mentioned in the package.json file. And there will be a folder created as node_modules.
+
+```
+node index
+```
+This will run the application and now listening to port for incoming requests.
+
+## API Documentation
+
+If the curl commands are preffered:
+```
+curl -X POST -H "Content-Type: application/json" -d '[{"exchangeName":"Binance","webSocketUrl":"wss://stream.binance.com:9443/ws/btcusdt@depth"},{"exchangeName":"Kraken","webSocketUrl":"wss://ws.kraken.com"},{"exchangeName":"Huobi","webSocketUrl":"wss://api.huobi.pro/ws"}]' http://localhost:3000/api/exchanges
+```
+This will create and sync exchange data taken from the web socket
+
+```
+curl -X GET -H "Content-Type: application/json" http://localhost:3000/api/global-price-index
+```
+This will retrieve the average mid price of the exchanges
+
+If the Postman is preffered:
+
+1. POST request:
+http://localhost:3000/api/exchanges
+
+with request body:
+[
+  {
+    "exchangeName": "Binance",
+    "webSocketUrl": "wss://stream.binance.com:9443/ws/btcusdt@depth"
+  },
+  {
+    "exchangeName": "Kraken",
+    "webSocketUrl": "wss://ws.kraken.com"
+  },
+  {
+    "exchangeName": "Huobi",
+    "webSocketUrl": "wss://api.huobi.pro/ws"
+  }
+]
+
+Response:
+
+Success:
+ "Order Book sync success" :200
+ 
+ Error:
+ - Invalid request body: 400
+ - Invalid exchange configuration: 400
+ - Internal server error: 500
+ 
+
+2. GET Request
+http://localhost:3000/api/global-price-index
+
+Response:
+
+Success:
+ "averageMidPrice": "25676.175" :200
+ 
+ Error:
+ - Internal server error: 500
+ 
+
+
+
