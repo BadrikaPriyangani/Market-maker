@@ -129,7 +129,6 @@ describe('calculateAverageMidPrice', () => {
       }
     };
 
-
     exchanges.push(binance);
     exchanges.push(kraken);
     exchanges.push(huobi);
@@ -169,7 +168,6 @@ describe('calculateAverageMidPrice', () => {
         asks: [],
       }
     };
-
 
     exchanges.push(binance);
     exchanges.push(kraken);
@@ -227,7 +225,6 @@ describe('calculateAverageMidPrice', () => {
         ],
       }
     };
-
 
     exchanges.push(binance);
     exchanges.push(kraken);
