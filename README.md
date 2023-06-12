@@ -100,7 +100,25 @@ npm test
 ## RoadMap
  
  - [ ] Extend the application to fetch Kraken and Huobi record books. 
- - [ ] Implement a logger for log all the details.
+ Here we have to send a subscription message after the web socket connection is created, to fetch the order book data.
+ Example: 
+ ```
+ socket.on('open', () => {
+  console.log('WebSocket connection opened for Kraken');
+  
+  // Subscribe to order book updates for the BTC/USDT trading pair
+  socket.send(JSON.stringify({
+    event: 'subscribe',
+    pair: 'BTC/USDT',
+    subscription: {
+      name: 'book',
+    },
+  }));
+});
+```
+Reffer to official API documentation for more info : https://docs.kraken.com/websockets/
+
+ - [ ] Implement a logger like winston or pino to write the logs to a file.
  - [ ] Improve testing with mocking to test the API end points (by mocking the web socket connection) 
 
 
